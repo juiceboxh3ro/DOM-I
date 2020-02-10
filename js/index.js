@@ -43,12 +43,42 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 
 // header nav
+
 let myNavLength = Object.keys(siteContent.nav);
 
 for(let i=1; i < myNavLength.length; i++) {
   let navBar = document.querySelector(`nav a:nth-child(${i})`);
   navBar.textContent = siteContent['nav'][`nav-item-${[i]}`];
 }
+
+const links = document.getElementsByTagName('a');
+
+Array.from(links).forEach(e=> {
+  e.style.color = 'green';
+})
+
+
+// New nav items
+const navAdd = document.querySelector('nav');
+
+const a = document.createElement('a');
+const link = document.createTextNode("New Item");
+
+a.appendChild(link);
+a.title="New Item 1";
+a.href="#";
+a.style.color = "green"
+
+navAdd.append(a);
+
+const a2 = document.createElement('a');
+const link2 = document.createTextNode("Newer Item");
+a2.appendChild(link2);
+a2.title="New Item 2";
+a2.href="#";
+a2.style.color = "green"
+
+navAdd.prepend(a2);
 
 // section cta-text
 let ctaH1 = document.querySelector('h1');
