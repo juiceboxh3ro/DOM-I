@@ -39,11 +39,48 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
+
+// Extra credit bonus stage
+logo.addEventListener('click', ()=>{
+  clicked = 1;
+  const codeWheel = document.getElementById("cta-img");
+  logo.style.cursor = 'wait';
+
+  codeWheel.style.transition = '3s', 'ease-in-out';
+  codeWheel.style.transform = 'rotate(1080deg) scale(0.5)';
+
+  const ctaEl = document.querySelector('.cta');
+
+  ctaEl.style.transition = '3s', 'ease-in-out';
+  ctaEl.style.border = "1px solid black";
+  ctaEl.style.borderRadius = "3px";
+  ctaEl.style.background = "rebeccapurple";
+
+  ctaEl.style.color = "#fff";
+
+  const addIt = document.querySelector('.cta-text');
+
+
+  const magicBtn = document.createElement('button');
+  const puppies = document.createTextNode('Take Me To Puppies');
+
+  magicBtn.appendChild(puppies);
+  magicBtn.title="Puppies Button";
+  magicBtn.target="_blank";
+  
+  addIt.append(magicBtn);
+
+  magicBtn.addEventListener('click', ()=> {
+      codeWheel.src = "https://images.unsplash.com/photo-1561488337-43f10c515a13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=379&q=80";
+      codeWheel.style.transform = 'scale(1)';
+      codeWheel.style.borderRadius = '200px';
+    });
+
+})
 
 
 // header nav
-
 let myNavLength = Object.keys(siteContent.nav);
 
 for(let i=1; i < myNavLength.length; i++) {
@@ -51,6 +88,8 @@ for(let i=1; i < myNavLength.length; i++) {
   navBar.textContent = siteContent['nav'][`nav-item-${[i]}`];
 }
 
+
+// color those links
 const links = document.getElementsByTagName('a');
 
 Array.from(links).forEach(e=> {
@@ -84,6 +123,7 @@ navAdd.prepend(a2);
 let ctaH1 = document.querySelector('h1');
 ctaH1.innerHTML = siteContent["cta"]["h1"];
 
+// cta button
 document.querySelector('.cta-text button').textContent = siteContent["cta"]["button"];
 
 // section cta-img
