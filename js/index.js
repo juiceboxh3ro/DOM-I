@@ -9,7 +9,7 @@ const siteContent = {
     "img-src": "img/logo.png"
   },
   "cta": {
-    "h1": "DOM Is Awesome",
+    "h1": "DOM<br> Is<br> Awesome",
     "button": "Get Started",
     "img-src": "img/header-img.png"
   },
@@ -28,7 +28,7 @@ const siteContent = {
   },
   "contact": {
     "contact-h4" : "Contact",
-    "address" : "123 Way 456 Street Somewhere, USA",
+    "address" : "123 Way 456 Street<br> Somewhere, USA",
     "phone" : "1 (888) 888-8888",
     "email" : "sales@greatidea.io",
   },
@@ -40,3 +40,52 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+
+// header nav
+let myNavLength = Object.keys(siteContent.nav);
+
+for(let i=1; i < myNavLength.length; i++) {
+  let navBar = document.querySelector(`nav a:nth-child(${i})`);
+  navBar.textContent = siteContent['nav'][`nav-item-${[i]}`];
+}
+
+// section cta-text
+let ctaH1 = document.querySelector('h1');
+ctaH1.innerHTML = siteContent["cta"]["h1"];
+
+document.querySelector('.cta-text button').textContent = siteContent["cta"]["button"];
+
+// section cta-img
+document.querySelector('#cta-img').setAttribute('src', siteContent["cta"]["img-src"]);
+
+
+// section main-content
+let myH4 = document.querySelectorAll('.text-content h4');
+myH4[0].textContent = siteContent["main-content"]["features-h4"];
+myH4[1].textContent = siteContent["main-content"]["about-h4"];
+myH4[2].textContent = siteContent["main-content"]["services-h4"];
+myH4[3].textContent = siteContent["main-content"]["product-h4"];
+myH4[4].textContent = siteContent["main-content"]["vision-h4"];
+
+let myP = document.querySelectorAll('.text-content p');
+myP[0].textContent = siteContent["main-content"]["features-content"];
+myP[1].textContent = siteContent["main-content"]["about-content"];
+myP[2].textContent = siteContent["main-content"]["services-content"];
+myP[3].textContent = siteContent["main-content"]["product-content"];
+myP[4].textContent = siteContent["main-content"]["vision-content"];
+
+// section middle-img
+document.querySelector('#middle-img').setAttribute('src', siteContent["main-content"]["middle-img-src"]);
+
+// section contact
+let myContactH4 = document.querySelector('.contact h4');
+let myContactP = document.querySelectorAll('.contact p');
+
+myContactH4.textContent = siteContent["contact"]["contact-h4"];
+myContactP[0].innerHTML = siteContent["contact"]["address"];
+myContactP[1].textContent = siteContent["contact"]["phone"];
+myContactP[2].textContent = siteContent["contact"]["email"];
+
+// footer
+document.querySelector('footer').textContent = siteContent.footer.copyright;
