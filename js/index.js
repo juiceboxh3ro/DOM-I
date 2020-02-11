@@ -60,8 +60,6 @@ logo.addEventListener('click', ()=>{
   ctaEl.style.color = "#fff";
 
   const addIt = document.querySelector('.cta-text');
-
-
   const magicBtn = document.createElement('button');
   const puppies = document.createTextNode('Take Me To Puppies');
 
@@ -75,17 +73,30 @@ logo.addEventListener('click', ()=>{
       codeWheel.src = "https://images.unsplash.com/photo-1561488337-43f10c515a13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=379&q=80";
       codeWheel.style.transform = 'scale(1)';
       codeWheel.style.borderRadius = '200px';
-    });
 
+      document.querySelector('.cta-text h1').textContent = "good boy";
+      document.title = `Puppy Time`;
+    });
 })
 
 
 // header nav
-let myNavLength = Object.keys(siteContent.nav);
+// let myNavLength = Object.keys(siteContent.nav);
 
-for(let i=1; i < myNavLength.length; i++) {
-  let navBar = document.querySelector(`nav a:nth-child(${i})`);
-  navBar.textContent = siteContent['nav'][`nav-item-${[i]}`];
+// for(let i=1; i < myNavLength.length; i++) {
+//   let navBar = document.querySelector(`nav a:nth-child(${i})`);
+//   navBar.textContent = siteContent['nav'][`nav-item-${[i]}`];
+// }
+
+let aCounter = 0;
+const myAnchors = document.querySelectorAll('nav a');
+for(const prop in siteContent['nav']) {
+  if(siteContent['nav'].hasOwnProperty(prop)) {
+    const text = siteContent['nav'][prop];
+    if(prop.substr(0,3) == 'nav') {
+      myAnchors[aCounter++].textContent = text;
+    }
+  }
 }
 
 
@@ -130,20 +141,38 @@ document.querySelector('.cta-text button').textContent = siteContent["cta"]["but
 document.querySelector('#cta-img').setAttribute('src', siteContent["cta"]["img-src"]);
 
 
-// section main-content
-let myH4 = document.querySelectorAll('.text-content h4');
-myH4[0].textContent = siteContent["main-content"]["features-h4"];
-myH4[1].textContent = siteContent["main-content"]["about-h4"];
-myH4[2].textContent = siteContent["main-content"]["services-h4"];
-myH4[3].textContent = siteContent["main-content"]["product-h4"];
-myH4[4].textContent = siteContent["main-content"]["vision-h4"];
+// // section main-content
+// let myH4 = document.querySelectorAll('.text-content h4');
+// myH4[0].textContent = siteContent["main-content"]["features-h4"];
+// myH4[1].textContent = siteContent["main-content"]["about-h4"];
+// myH4[2].textContent = siteContent["main-content"]["services-h4"];
+// myH4[3].textContent = siteContent["main-content"]["product-h4"];
+// myH4[4].textContent = siteContent["main-content"]["vision-h4"];
 
-let myP = document.querySelectorAll('.text-content p');
-myP[0].textContent = siteContent["main-content"]["features-content"];
-myP[1].textContent = siteContent["main-content"]["about-content"];
-myP[2].textContent = siteContent["main-content"]["services-content"];
-myP[3].textContent = siteContent["main-content"]["product-content"];
-myP[4].textContent = siteContent["main-content"]["vision-content"];
+// let myP = document.querySelectorAll('.text-content p');
+// myP[0].textContent = siteContent["main-content"]["features-content"];
+// myP[1].textContent = siteContent["main-content"]["about-content"];
+// myP[2].textContent = siteContent["main-content"]["services-content"];
+// myP[3].textContent = siteContent["main-content"]["product-content"];
+// myP[4].textContent = siteContent["main-content"]["vision-content"];
+
+
+// for ... in
+
+let h4Counter = 0;
+let pCounter = 0;
+const myH4 = document.querySelectorAll('.text-content h4');
+const myP = document.querySelectorAll('.text-content p');
+for(const prop in siteContent['main-content']) {
+  if(siteContent['main-content'].hasOwnProperty(prop)) {
+    const text = siteContent['main-content'][prop];
+    if(prop.substr(-8) == "-content")
+      myP[pCounter++].textContent = text;
+    else if(prop.substr(-3) == "-h4")
+      myH4[h4Counter++].textContent = text;
+  }
+}
+
 
 // section middle-img
 document.querySelector('#middle-img').setAttribute('src', siteContent["main-content"]["middle-img-src"]);
